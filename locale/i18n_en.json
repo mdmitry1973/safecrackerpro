@@ -1,0 +1,18 @@
+{
+  "Safecracker": "Safecracker",
+  "Settings": "Settings",
+  "New game": "New game",
+  "Move": "Move",
+  "gold coin": "gold coin",
+  "silver coin" : "silver coin",
+  "Intermediate" : "Intermediate",
+  "Beginner" : "Beginner",
+  "Expert" : "Expert",
+  "Choose level" : "Choose level",
+  "The end" : "The end",
+  "You need have different numbers." : "You need have different numbers.",
+  "The end game. You found right number " : "The end game. You found right number ",
+  "About" : "About",
+  "OK" : "OK",
+  "Safecracker is a game where you must use your logic in order to guess a 4-digit secret number selected by the computer at the beginning of the game. The number is from 0 to 9. Each digit appears once at most. How many digits have you guessed on the same position will show by gold coins. How many digit shave you guessed on a different position will show by silver coins. Good luck!" : "Safecracker is a game where you must use your logic in order to guess a 4-digit secret number selected by the computer at the beginning of the game. The number is from 0 to 9. Each digit appears once at most. How many digits have you guessed on the same position will show by gold coins. How many digit shave you guessed on a different position will show by silver coins. Good luck!"
+}

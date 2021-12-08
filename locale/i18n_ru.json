@@ -1,0 +1,18 @@
+{
+  "Safecracker": "Медвижатник",
+  "Settings": "Settings",
+  "New game": "Новая игра",
+  "Move": "Ход",
+  "gold coin": "gold coin",
+  "silver coin" : "silver coin",
+  "Intermediate" : "Средний",
+  "Beginner" : "Начальный",
+  "Expert" : "Эксперт",
+  "Choose level" : "Выбор уровня",
+  "The end" : "Конец игры",
+  "You need have different numbers." : "Все числа должны быть различными.",
+  "The end game. You found right number " : "Конец игры. Вы нашли правильное число ",
+  "About" : "О",
+  "OK" : "Да",
+  "Safecracker is a game where you must use your logic in order to guess a 4-digit secret number selected by the computer at the beginning of the game. The number is from 0 to 9. Each digit appears once at most. How many digits have you guessed on the same position will show by gold coins. How many digit shave you guessed on a different position will show by silver coins. Good luck!" : "Медвежатник это игра где вы можете проверить ваши логический способности. Компьютер загадывает число которое вам нужно отгадать. Число содержит числа от 0 до 9 и они не повторяются. Количество отгаданных чисел с совпадением положения показывается золотыми монетками. Количество отгаданных чисел и с не совпадением положения показывается серебреными монетками. Удачи!"
+}
