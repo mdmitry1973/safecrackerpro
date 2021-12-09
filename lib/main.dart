@@ -56,15 +56,60 @@ class _MyHomePageState extends State<MyHomePage> {
   List<int> data_image_2 = [];
 
   bool start = true;
+  static bool adReady = false;
 
-  final BannerAd myBanner = BannerAd(
+  // final BannerAdListener listener = BannerAdListener(
+  //   // Called when an ad is successfully received.
+  //   onAdLoaded: ((Ad ad) {
+  //
+  //    print('Ad loaded.');
+  //   // adReady = true;
+  //   }),
+  //   // Called when an ad request failed.
+  //   onAdFailedToLoad: (Ad ad, LoadAdError error) {
+  //     // Dispose the ad here to free resources.
+  //     ad.dispose();
+  //     print('Ad failed to load: $error');
+  //   },
+  //   // Called when an ad opens an overlay that covers the screen.
+  //   onAdOpened: (Ad ad) => print('Ad opened.'),
+  //   // Called when an ad removes an overlay that covers the screen.
+  //   onAdClosed: (Ad ad) => print('Ad closed.'),
+  //   // Called when an impression occurs on the ad.
+  //   onAdImpression: (Ad ad) => print('Ad impression.'),
+  // );
+
+
+  //final Completer<BannerAd> bannerCompleterTemp = Completer<BannerAd>();
+  //FutureBuilder<BannerAd> adsUITemp;
+   //BannerAd _bannerAd;
+
+
+  BannerAd _bannerAd = BannerAd(
     adUnitId: 'ca-app-pub-6576238597063244/9980833237',
     size: AdSize.banner,
     request: AdRequest(),
-    listener: BannerAdListener(),
+    listener: BannerAdListener(
+      // Called when an ad is successfully received.
+      onAdLoaded: ((Ad ad) {
+
+        print('Ad loaded.');
+         adReady = true;
+      }),
+      // Called when an ad request failed.
+      onAdFailedToLoad: (Ad ad, LoadAdError error) {
+        // Dispose the ad here to free resources.
+        ad.dispose();
+        print('Ad failed to load: $error');
+      },
+      // Called when an ad opens an overlay that covers the screen.
+      onAdOpened: (Ad ad) => print('Ad opened.'),
+      // Called when an ad removes an overlay that covers the screen.
+      onAdClosed: (Ad ad) => print('Ad closed.'),
+      // Called when an impression occurs on the ad.
+      onAdImpression: (Ad ad) => print('Ad impression.'),
+    ),//BannerAdListener(),
   );
-
-
 
   @override
   void initState() {
@@ -74,7 +119,40 @@ class _MyHomePageState extends State<MyHomePage> {
       startGame();
     });
 
-    myBanner.load();
+    _bannerAd = BannerAd(
+    adUnitId: 'ca-app-pub-6576238597063244/9980833237',
+    size: AdSize.banner,
+    request: AdRequest(),
+    listener: BannerAdListener(
+    // Called when an ad is successfully received.
+    onAdLoaded: ((Ad ad) {
+
+    print('Ad loaded.');
+    adReady = true;
+    }),
+    // Called when an ad request failed.
+    onAdFailedToLoad: (Ad ad, LoadAdError error) {
+    // Dispose the ad here to free resources.
+    ad.dispose();
+    print('Ad failed to load: $error');
+    },
+    // Called when an ad opens an overlay that covers the screen.
+    onAdOpened: (Ad ad) => print('Ad opened.'),
+    // Called when an ad removes an overlay that covers the screen.
+    onAdClosed: (Ad ad) => print('Ad closed.'),
+    // Called when an impression occurs on the ad.
+    onAdImpression: (Ad ad) => print('Ad impression.'),
+    ),//BannerAdListener(),
+    );
+
+    _bannerAd.load();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bannerAd.dispose();
+    //_bannerAd = null;
   }
 
   Future<void> startGame() async {
@@ -151,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    final AdWidget adWidget = AdWidget(ad: myBanner);
+    final AdWidget adWidget = AdWidget(ad: _bannerAd);
 
     List<Widget> numbersWidget = [];
     List<Widget> resultWidget = [];
@@ -261,6 +339,22 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         //mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Column(
+            children: [
+              Align(
+                alignment: FractionalOffset.topCenter,
+                child: Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: adWidget,
+                      width: _bannerAd.size.width.toDouble(),
+                      height: _bannerAd.size.height.toDouble(),
+                    )
+                ),
+              )
+            ],
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -410,7 +504,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   shrinkWrap: true,
                 ))
               :  Text(Translations.of(context).text('No move yet'))),
-          adWidget,
+         // adWidget,
+         // adsUITemp,
+
         ],
       ),
     );
